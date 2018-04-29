@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getContacts } from './actions/contacts'
+import { getContacts } from './actions/contacts';
+import TopNav from './componets/TopNav'
 
 class App extends Component {
   componentDidMount(){
@@ -13,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
+       <TopNav />
       </div>
     );
   }
