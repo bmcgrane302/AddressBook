@@ -1,6 +1,7 @@
-//import users from './users';
+import contacts from './contacts';
 import { combineReducers } from 'redux';
 const rootReducer = combineReducers({
-//  users
+   contacts
 });
+
 export default rootReducer;
