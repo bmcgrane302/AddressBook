@@ -4,6 +4,8 @@ import { Card, CardImg, CardText, CardBody,
 import { addContact } from '../actions/contacts';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import TopNav from './TopNav';
+
 
 class ContactInput extends Component {
   state = {
@@ -24,6 +26,7 @@ class ContactInput extends Component {
   render () {
     return (
       <div>
+        <TopNav />
         <Card>
           <CardBody>
             <Form onSubmit={this.handleSubmit}>

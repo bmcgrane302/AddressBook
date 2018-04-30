@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Container, Row, Col } from 'reactstrap';
 import Contact from './Contact';
+import TopNav from './TopNav';
+
 
 class ContactList extends Component {
 
@@ -15,11 +17,14 @@ class ContactList extends Component {
     })
 
     return (
-      <Container>
-        <Row>
-          {theContacts}
-        </Row>
-      </Container>
+     <div>
+       <TopNav />
+       <Container>
+         <Row>
+           {theContacts}
+         </Row>
+       </Container>
+     </div>
     )
   }
 }
