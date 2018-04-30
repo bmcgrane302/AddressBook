@@ -16,3 +16,14 @@ export const getContacts = () => {
     })
   }
 }
+
+export const addContact = (newContact) => {
+  return async (dispatch) => {
+    dispatch({type: ADD_CONTACT_PENDING})
+    let contacts = await axios.post('http://localhost:8000/people', newContact)
+    dispatch({
+      type: ADD_CONTACT_SUCCESS,
+      payload: contacts
+    })
+  }
+}

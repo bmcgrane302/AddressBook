@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import { getContacts } from './actions/contacts';
 import TopNav from './componets/TopNav';
 import ContactList from './componets/ContactList';
+import ContactInput from './componets/ContactInput';
+import { Row, Col } from 'reactstrap';
 
 class App extends Component {
   componentDidMount(){
@@ -16,6 +18,11 @@ class App extends Component {
     return (
       <div className="App">
        <TopNav />
+       <Row>
+         <Col>
+           <ContactInput />
+         </Col>
+       </Row>
        <ContactList />
       </div>
     );

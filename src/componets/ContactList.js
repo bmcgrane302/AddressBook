@@ -6,13 +6,14 @@ import Contact from './Contact';
 class ContactList extends Component {
 
   render () {
-    let theContacts = this.props.contacts.map((contact) => {
+    let theContacts = this.props.contacts.map((contact,i) => {
       return  (
         <Col key={contact.id} md={4}>
             <Contact contact={contact}/>
         </Col>
       )
     })
+
     return (
       <Container>
         <Row>
