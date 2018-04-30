@@ -4,6 +4,8 @@ export const GET_CONTACTS_PENDING = 'GET_CONTACTS_PENDING'
 export const GET_CONTACTS_SUCCESS = 'GET_CONTACTS_SUCCESS'
 export const ADD_CONTACT_PENDING = 'ADD_CONTACT_PENDING'
 export const ADD_CONTACT_SUCCESS = 'ADD_CONTACT_SUCCESS'
+export const REMOVE_CONTACT_PENDING = 'REMOVE_CONTACT_PENDING'
+export const REMOVE_CONTACT_SUCCESS = 'REMOVE_CONTACT_SUCCESS'
 
 
 export const getContacts = () => {
@@ -23,6 +25,17 @@ export const addContact = (newContact) => {
     let contacts = await axios.post('http://localhost:8000/people', newContact)
     dispatch({
       type: ADD_CONTACT_SUCCESS,
+      payload: contacts
+    })
+  }
+}
+
+export const removeContact = (id) => {
+  return async (dispatch) => {
+    dispatch({type: REMOVE_CONTACT_PENDING})
+    let contacts = await axios.delete(`http://localhost:8000/people/${id}`)
+    dispatch({
+      type: REMOVE_CONTACT_SUCCESS,
       payload: contacts
     })
   }

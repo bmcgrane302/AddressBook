@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { removeContact } from '../actions/contacts';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-const Contact = (props) => {
-  let {fname, lname, company, email, phone, address} = props.contact;
+class Contact extends Component {
+
+
+
+render() {
+ let {id, fname, lname, company, email, phone, address} = this.props.contact;
+
+
   return (
     <div>
       <Card>
@@ -14,11 +23,20 @@ const Contact = (props) => {
           <CardText>{address}</CardText>
           <CardText>{email}</CardText>
           <CardText>{phone}</CardText>
-          <Button>Button</Button>
+          <Button
+            onClick={()=> this.props.removeContact(id)}
+            >Delete</Button>
         </CardBody>
       </Card>
     </div>
   );
-};
+ }
+}
 
-export default Contact;
+function mapDispatchToProps(dispatch){
+  return {
+    removeContact: bindActionCreators(removeContact, dispatch)
+  }
+}
+
+export default connect(null, mapDispatchToProps) (Contact);
