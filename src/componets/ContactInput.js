@@ -21,6 +21,7 @@ class ContactInput extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     this.props.addContact(this.state)
+    this.props.history.push('/');
   }
 
   render () {
@@ -93,7 +94,10 @@ class ContactInput extends Component {
                  value={this.state.photo_url}
                  />
              </FormGroup>
-             <Button type='submit'>Submit</Button>
+             <Button
+               type='submit'
+
+               >Submit</Button>
            </Form>
          </CardBody>
         </Card>
