@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, CardFooter, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText  } from 'reactstrap';
-import { removeContact } from '../actions/contacts';
+import { removeContact, editContact } from '../actions/contacts';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -19,6 +19,20 @@ class Contact extends Component {
 
 openEdit = () => {
   this.setState({showModal: !this.state.showModal})
+}
+
+handleSubmit = () => {
+  console.log('test update');
+  this.props.editContact(this.props.contact.id,
+   {fname: this.state.fname,
+        lname:this.state.lname,
+        company:this.state.company,
+        email:this.state.email,
+        phone:this.state.phone,
+        address:this.state.address,
+        photo_url:this.state.photo_url
+   })
+   this.openEdit()
 }
 
 render() {
@@ -46,7 +60,7 @@ render() {
         <ModalHeader>Edit Contact</ModalHeader>
          <ModalBody>
            <Card>
-             <Form>
+             <Form onSubmit={this.handleSubmit}>
                <FormGroup>
                  <Label>First Name</Label>
                  <Input
@@ -121,7 +135,8 @@ render() {
            </Card>
          </ModalBody>
         <ModalFooter>
-            <Button onClick={()=> this.openEdit()}>Cancel</Button>
+          <Button onClick={()=> this.handleSubmit()}>Update</Button>
+          <Button onClick={()=> this.openEdit()}>Cancel</Button>
         </ModalFooter>
       </Modal>
     </div>
@@ -131,7 +146,8 @@ render() {
 
 function mapDispatchToProps(dispatch){
   return {
-    removeContact: bindActionCreators(removeContact, dispatch)
+    removeContact: bindActionCreators(removeContact, dispatch),
+    editContact: bindActionCreators(editContact, dispatch)
   }
 }
 
