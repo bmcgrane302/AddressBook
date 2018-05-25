@@ -17,7 +17,7 @@ class ContactList extends Component {
 
   render () {
     console.log('test', this.props.contacts);
-    let filterList = this.state.filterTitle !== ''? this.props.contacts.filter((item)=> item.fname.startsWith(this.state.filterTitle.toUpperCase())):this.props.contacts;
+    let filterList = this.state.filterTitle !== ''? this.props.contacts.filter((item)=> item.fname.startsWith(this.state.filterTitle)):this.props.contacts;
 
     let theContacts = filterList.sort((a,b)=> b.id-a.lname).map((contact,i) => {
       return  (

@@ -34,6 +34,7 @@ handleSubmit = () => {
    })
    this.openEdit()
 }
+correctName = (str) =>str.slice(0,1).toUpperCase()+str.slice(1,str.length).toLowerCase();
 
 render() {
  let {id, fname, lname, company, email, phone, address, photo_url} = this.props.contact;
@@ -44,8 +45,8 @@ render() {
       <Card style={{height: 500, margin: 10}}>
         <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
         <CardBody>
-          <CardTitle>{fname} {lname}</CardTitle>
-          <CardSubtitle>Company: {company}</CardSubtitle>
+          <CardTitle>{this.correctName(fname)} {this.correctName(lname)}</CardTitle>
+          <CardSubtitle>Company: {this.correctName(company)}</CardSubtitle>
           <CardText>{address}</CardText>
           <CardText>{email}</CardText>
           <CardText>{phone}</CardText>

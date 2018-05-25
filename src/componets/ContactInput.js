@@ -36,7 +36,7 @@ class ContactInput extends Component {
                <Input
                  type="text"
                  id="firstName"
-                 onChange={(e) => this.setState({fname: e.target.value})}
+                 onChange={(e) => this.setState({fname: e.target.value.toLowerCase()})}
                  value={this.state.fname}
                />
              </FormGroup>
@@ -45,7 +45,7 @@ class ContactInput extends Component {
                <Input
                  type="text"
                  id="lastName"
-                 onChange={(e) => this.setState({lname: e.target.value})}
+                 onChange={(e) => this.setState({lname: e.target.value.toLowerCase()})}
                  value={this.state.lname}
                  />
              </FormGroup>
@@ -54,7 +54,7 @@ class ContactInput extends Component {
                <Input
                  type="text"
                  id="company"
-                 onChange={(e) => this.setState({company: e.target.value})}
+                 onChange={(e) => this.setState({company: e.target.value.toLowerCase()})}
                  value={this.state.company}
                  />
              </FormGroup>
