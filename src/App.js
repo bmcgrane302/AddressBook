@@ -15,11 +15,13 @@ import {
 class App extends Component {
   componentDidMount(){
     this.props.getContacts()
-
+     console.log(this.props)
   }
 
 
+
   render() {
+    console.log(this.props);
     return (
       <div className="App">
         <Router>

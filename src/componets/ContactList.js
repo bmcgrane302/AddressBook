@@ -16,8 +16,10 @@ class ContactList extends Component {
   }
 
   render () {
-    console.log('state', this.state)
-    let theContacts = this.props.contacts.sort((a,b)=> b.id-a.lname).map((contact,i) => {
+    console.log('test', this.props.contacts);
+    let filterList = this.state.filterTitle !== ''? this.props.contacts.filter((item)=> item.fname.startsWith(this.state.filterTitle.toUpperCase())):this.props.contacts;
+
+    let theContacts = filterList.sort((a,b)=> b.id-a.lname).map((contact,i) => {
       return  (
         <Col key={contact.id} md={4}>
             <Contact contact={contact}/>
@@ -48,6 +50,7 @@ class ContactList extends Component {
 function mapStateToProps(state){
   return{
     contacts: state.contacts
+
   }
 }
 
